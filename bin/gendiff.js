@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const { Command } = require('commander');
-const program = new Command();
+import { program } from 'commander';
+import genDiff from '../index.js';
 
 program
   .name('gendiff')
@@ -11,5 +11,11 @@ program
 program
   .option('-f, --format <type>', 'output format')
   .arguments('<filepath1> <filepath2>')
+  .action((file1, file2, options) => {
+    options = program.opts();
+    if (!options.format) console.log(genDiff(file1, file2));
+    else if (options.format === 'json') console.log(genDiff(file1, file2));
+    else console.log('Error: unknown format, use json format');
+  })
 
 program.parse();
