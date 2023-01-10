@@ -18,6 +18,7 @@ const getString = (arr) => { // функция для отображения ф�
       default:
         result.push(`    ${element.name}: ${element.value}`);
     }
+    return result;
   });
   return (`{\n${result.join('\n')}\n}`);
 };
@@ -34,17 +35,20 @@ const genDiff = (file1, file2) => {
   const sorted = _.uniqWith(_.sortBy(objects), _.isEqual);
   const result = [];
 
-  sorted.map(([key, value]) => { // проходим по отсортированному массиву функцией map
+  sorted.map(([key, val]) => { // проходим по отсортированному массиву функцией map
     if (!Object.hasOwn(obj1, key)) {
       // заполняем результирующий массив объектами с данными
-      result.push({ name: key, type: 'added', value: value });
+      result.push({ name: key, type: 'added', value: val });
     } else if (!Object.hasOwn(obj2, key)) {
-      result.push({ name: key, type: 'deleted', value: value });
+      result.push({ name: key, type: 'deleted', value: val });
     } else if (obj1[key] !== obj2[key]) {
-      result.push({ name: key, type: 'changed', deletedValue: obj1[key], addedValue: obj2[key] });
+      result.push({
+        name: key, type: 'changed', deletedValue: obj1[key], addedValue: obj2[key],
+      });
     } else {
-      result.push({ name: key, type: 'unchanged', value: value });
+      result.push({ name: key, type: 'unchanged', value: val });
     }
+    return result;
   });
   // пропускаем уникальные значения result через функцию getString для получения строки
   return getString(_.uniqWith(result, _.isEqual));

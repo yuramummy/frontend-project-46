@@ -12,7 +12,7 @@ program
   .option('-f, --format <type>', 'output format')
   .arguments('<filepath1> <filepath2>')
   .action((file1, file2, options) => {
-    options = program.opts();
+    // options = program.opts();
     if (!options.format) console.log(genDiff(file1, file2));
     else if (options.format === 'json') console.log(genDiff(file1, file2));
     else console.log('Error: unknown format, use json format');
