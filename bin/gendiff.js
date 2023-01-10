@@ -16,6 +16,6 @@ program
     if (!options.format) console.log(genDiff(file1, file2));
     else if (options.format === 'json') console.log(genDiff(file1, file2));
     else console.log('Error: unknown format, use json format');
-  })
+  });
 
 program.parse();
