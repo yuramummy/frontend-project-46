@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import _ from 'lodash';
+import path from 'node:path';
 
 const getString = (arr) => { // функция для отображения финальной строки
   const result = [];
@@ -23,7 +24,10 @@ const getString = (arr) => { // функция для отображения ф�
   return (`{\n${result.join('\n')}\n}`);
 };
 
-const genDiff = (file1, file2) => {
+const genDiff = (filepath1, filepath2) => {
+  const file1 = path.resolve(process.cwd(), filepath1); // строим абсолютный путь до первого файла
+  const file2 = path.resolve(process.cwd(), filepath2); // строим абсолютный путь до второго файла
+
   const obj1 = JSON.parse(fs.readFileSync(file1)); // читаем и парсим первый файл
   const obj2 = JSON.parse(fs.readFileSync(file2)); // читаем и парсим второй файл
 
