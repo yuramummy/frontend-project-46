@@ -5,3 +5,5 @@
 [![GitHub Actions](https://github.com/yuramummy/frontend-project-46/actions/workflows/github-actions.yml/badge.svg)](https://github.com/yuramummy/frontend-project-46/actions/workflows/github-actions.yml)
 
 https://asciinema.org/a/B4FZFy2wb1Ks953DxwIWqj0HB
+
+https://asciinema.org/a/ILbkhxB23CA3gSfMul1I5HypP
