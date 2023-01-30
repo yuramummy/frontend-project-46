@@ -18,3 +18,7 @@ const resultJSON = readFile('resultJSON.txt');
 test('difference JSON files', () => {
   expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'))).toEqual(resultJSON);
 });
+
+test('difference YAML files', () => {
+  expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'))).toEqual(resultJSON);
+});
