@@ -1,6 +1,8 @@
-import fs from 'node:fs';
+// import fs from 'node:fs';
+import { readFileSync } from 'node:fs';
 import _ from 'lodash';
-import path from 'node:path';
+// import path from 'node:path';
+import parse from './src/parser.js';
 
 const getString = (arr) => { // функция для отображения финальной строки
   const result = [];
@@ -25,11 +27,16 @@ const getString = (arr) => { // функция для отображения ф�
 };
 
 const genDiff = (filepath1, filepath2) => {
-  const file1 = path.resolve(process.cwd(), filepath1); // строим абсолютный путь до первого файла
-  const file2 = path.resolve(process.cwd(), filepath2); // строим абсолютный путь до второго файла
+  // const file1 = path.resolve(process.cwd(), filepath1); // строим абсолютный путь до первого файла
+  // const file2 = path.resolve(process.cwd(), filepath2); // строим абсолютный путь до второго файла
 
-  const obj1 = JSON.parse(fs.readFileSync(file1)); // читаем и парсим первый файл
-  const obj2 = JSON.parse(fs.readFileSync(file2)); // читаем и парсим второй файл
+  // const obj1 = JSON.parse(fs.readFileSync(file1)); // читаем и парсим первый файл
+  // const obj2 = JSON.parse(fs.readFileSync(file2)); // читаем и парсим второй файл
+  const data1 = readFileSync(filepath1, 'utf-8'); // читаем первый файл
+  const data2 = readFileSync(filepath2, 'utf-8'); // читаем второй файл
+  
+  const obj1 = parse(data1, filepath1.split('.')[1]); // парсим данные из файла на основе его расширения с помощью функции parse
+  const obj2 = parse(data2, filepath2.split('.')[1]); // результаты полученных объектов присваиваем переменным
 
   const arr1 = Object.entries(obj1); // формируем массив из первого объекта
   const arr2 = Object.entries(obj2); // формируем массив из второго объекта
