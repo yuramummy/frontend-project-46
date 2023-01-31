@@ -13,12 +13,12 @@ const readFile = (file) => {
   return data;
 };
 
-const resultJSON = readFile('resultJSON.txt');
+const resultStylish = readFile('resultStylish.txt');
 
-test('difference JSON files', () => {
-  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'))).toEqual(resultJSON);
+test('JSON file test in stylish format', () => {
+  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'))).toEqual(resultStylish);
 });
 
-test('difference YAML files', () => {
-  expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'))).toEqual(resultJSON);
+test('YAML file test in stylish format', () => {
+  expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'))).toEqual(resultStylish);
 });
