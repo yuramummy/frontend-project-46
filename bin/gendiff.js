@@ -9,13 +9,10 @@ program
   .version('0.8.0');
 
 program
-  .option('-f, --format <type>', 'output format')
+  .option('-f, --format <type>', 'output format', 'json')
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2, options) => {
-    // options = program.opts();
-    if (!options.format) console.log(genDiff(filepath1, filepath2));
-    else if (options.format === 'json') console.log(genDiff(filepath1, filepath2));
-    else console.log('Error: unknown format, use json format');
+    console.log(genDiff(filepath1, filepath2, options.format));
   });
 
 program.parse();
