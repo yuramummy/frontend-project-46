@@ -25,9 +25,9 @@ test('YAML file test in stylish format', () => {
 });
 
 test('JSON file test in plain format', () => {
-  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'))).toEqual(resultPlain);
+  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain')).toEqual(resultPlain);
 });
 
 test('YAML file test in plain format', () => {
-  expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'))).toEqual(resultPlain);
+  expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'plain')).toEqual(resultPlain);
 });
