@@ -11,22 +11,41 @@
 <p>Utility features:</p>
 <ul>
   <li>Support for different input formats: yaml, json</li>
-  <li>eport generation in the form of plain text, stylish and json</li>
+  <li>Report generation in the form of plain text, stylish and json</li>
 </ul>
 
 ## Installation
-To setup games clone this repository and enter the commands:
+Clone this repository and enter the commands:
 ```sh
 make install
 npm link
 ```
 
+## Help
+```sh
+gendiff -h
+```
+## Flat JSON
+Example comparing two flat json files
+
 https://asciinema.org/a/B4FZFy2wb1Ks953DxwIWqj0HB
+
+## Flat YAML
+Example comparing two flat yaml files
 
 https://asciinema.org/a/ILbkhxB23CA3gSfMul1I5HypP
 
+## Nested structure
+Nested structure comparison example
+
 https://asciinema.org/a/p2Zu0I9rRKizyXyyRs3LGLFFY
 
+## Plain and stylish format
+Example of plain and stylish format
+
 https://asciinema.org/a/lnPR9C8MzgtfD7vTHfcLXjVIo
+
+## JSON format
+Example of json format
 
 https://asciinema.org/a/vjLKN21UA54zgTXD6yhjv9XZS
