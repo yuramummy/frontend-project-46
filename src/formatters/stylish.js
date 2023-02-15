@@ -16,7 +16,7 @@ const stringify = (data, depth) => {
   return ['{', ...lines, `${getBracketIndent(depth)}}`].join('\n');
 };
 
-const getString = (array) => {
+const getStylish = (array) => {
   const iter = (node, depth) => {
     const lines = node.map((data) => {
       const {
@@ -42,4 +42,4 @@ const getString = (array) => {
   return iter(array, 1);
 };
 
-export default getString;
+export default getStylish;
