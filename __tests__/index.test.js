@@ -13,8 +13,9 @@ const readFile = (file) => {
   return data;
 };
 
-const resultStylish = readFile('resultStylish.txt');
-const resultPlain = readFile('resultPlain.txt');
+const resultStylish = readFile('result-stylish.txt');
+const resultPlain = readFile('result-plain.txt');
+const resultJSON = readFile('result-json.txt');
 
 test('JSON file test in stylish format', () => {
   expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'))).toEqual(resultStylish);
@@ -30,4 +31,12 @@ test('JSON file test in plain format', () => {
 
 test('YAML file test in plain format', () => {
   expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'plain')).toEqual(resultPlain);
+});
+
+test('JSON file test in JSON format', () => {
+  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json')).toEqual(resultJSON);
+});
+
+test('YAML file test in JSON format', () => {
+  expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'json')).toEqual(resultJSON);
 });
