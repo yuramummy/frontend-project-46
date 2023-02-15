@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 const stringify = (data) => {
-  if (_.isObject(data)) { //
+  if (_.isObject(data)) {
     return '[complex value]';
   }
   if (typeof data === 'string') {
@@ -9,10 +9,10 @@ const stringify = (data) => {
   }
   return data;
 };
-//
+
 const getPlain = (array) => {
-  const iter = (node, path) => { //
-    const lines = node.flatMap((data) => { //
+  const iter = (node, path) => {
+    const lines = node.flatMap((data) => {
       const {
         type, key, value, addedValue, deletedValue, children,
       } = data;
@@ -29,7 +29,7 @@ const getPlain = (array) => {
       if (type === 'changed') {
         return `Property '${path}${key}' was updated. From ${stringify(deletedValue)} to ${stringify(addedValue)}`;
       }
-      return []; //
+      return [];
     });
     return lines.join('\n');
   };
