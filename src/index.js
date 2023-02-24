@@ -11,8 +11,8 @@ const genDiff = (filepath1, filepath2, format) => {
   // парсим данные из файла на основе его расширения с помощью функции parse
   // результаты полученных объектов присваиваем переменным
 
-  const fileExtension1 = path.extname(filepath1); // получаем расширение файла 1
-  const fileExtension2 = path.extname(filepath2); // получаем расширение файла 2
+  const fileExtension1 = path.extname(filepath1).slice(1); // получаем расширение файла 1
+  const fileExtension2 = path.extname(filepath2).slice(1); // получаем расширение файла 2
 
   const obj1 = parse(data1, fileExtension1);
   const obj2 = parse(data2, fileExtension2);
