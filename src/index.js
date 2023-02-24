@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import parse from './parser.js';
 import getFormat from './formatters/index.js';
+import getDiff from './get-diff.js';
 
 const genDiff = (filepath1, filepath2, format) => {
   const data1 = readFileSync(filepath1, 'utf-8'); // читаем первый файл
@@ -16,7 +17,8 @@ const genDiff = (filepath1, filepath2, format) => {
   const obj1 = parse(data1, fileExtension1);
   const obj2 = parse(data2, fileExtension2);
 
-  return getFormat(obj1, obj2, format);
+  const diff = getDiff(obj1, obj2);
+  return getFormat(diff, format);
 };
 
 export default genDiff;
