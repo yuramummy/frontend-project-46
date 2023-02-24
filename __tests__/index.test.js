@@ -17,26 +17,13 @@ const resultStylish = readFile('result-stylish.txt');
 const resultPlain = readFile('result-plain.txt');
 const resultJSON = readFile('result-json.txt');
 
-test('JSON file test in stylish format', () => {
-  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'))).toEqual(resultStylish);
-});
+const extensions = ['json', 'yml'];
 
-test('YAML file test in stylish format', () => {
-  expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'))).toEqual(resultStylish);
-});
+test.each([extensions])('main test', (extension) => {
+  const filePath1 = getFixturePath(`file1.${extension}`);
+  const filePath2 = getFixturePath(`file2.${extension}`);
 
-test('JSON file test in plain format', () => {
-  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain')).toEqual(resultPlain);
-});
-
-test('YAML file test in plain format', () => {
-  expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'plain')).toEqual(resultPlain);
-});
-
-test('JSON file test in JSON format', () => {
-  expect(genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json')).toEqual(resultJSON);
-});
-
-test('YAML file test in JSON format', () => {
-  expect(genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'json')).toEqual(resultJSON);
+  expect(genDiff(filePath1, filePath2)).toBe(resultStylish);
+  expect(genDiff(filePath1, filePath2, 'plain')).toBe(resultPlain);
+  expect(genDiff(filePath1, filePath2, 'json')).toBe(resultJSON);
 });
